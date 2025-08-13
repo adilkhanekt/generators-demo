@@ -1,3 +1,25 @@
+print("--------- Generator and list comparison ---------")
+
+import tracemalloc
+
+
+tracemalloc.start()
+
+
+# x = (i for i in range(100))
+x = [i for i in range(100)]
+
+current, peak = tracemalloc.get_traced_memory()
+
+print(f"Current memory usage: {current / 1024:.2f} KB")  # Memory currently used
+print(f"Peak memory usage: {peak / 1024:.2f} KB")  # Peak memory usage during runtime
+
+tracemalloc.stop()
+
+
+
+print("--------- Generators experiments ---------")
+
 from typing import List
 
 # Regular list with while loop example
