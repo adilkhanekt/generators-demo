@@ -5,9 +5,27 @@ import tracemalloc
 
 tracemalloc.start()
 
-
 # x = (i for i in range(100))
-x = [i for i in range(100)]
+# x = [i for i in range(100)]
+
+
+def gen(limit):
+    i = 0
+    while i <= limit:
+        yield i**2
+        i += 1
+
+def lst(limit):
+    i = 0
+    res = []
+    while i <= limit:
+        res.append(i**2)
+        i += 1
+    return res
+
+for val in lst(100):
+    print(val)
+    
 
 current, peak = tracemalloc.get_traced_memory()
 
